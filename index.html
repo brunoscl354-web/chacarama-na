@@ -300,31 +300,80 @@
             background: var(--bege);
         }
 
-        .regras-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .regras-container {
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .regra-item {
+        .regra-bloco {
             background: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--sombra);
+            margin-bottom: 1.5rem;
+        }
+
+        .regra-bloco h3 {
+            color: var(--verde-principal);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
-        .regra-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
+        .regra-bloco p {
+            color: var(--cinza-escuro);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
         }
 
-        .regra-item strong {
+        .regra-bloco strong {
             color: var(--verde-principal);
+        }
+
+        .regra-destaque {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .regra-destaque strong {
+            color: #856404;
+        }
+
+        /* CHECK-IN/CHECKOUT */
+        .check-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .check-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            text-align: center;
+        }
+
+        .check-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .check-card h4 {
+            color: var(--verde-principal);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .check-card p {
+            font-size: 1.1rem;
+            color: var(--cinza-escuro);
         }
 
         /* CONTATO */
@@ -396,6 +445,7 @@
             h2 { font-size: 2rem; }
             section { padding: 3rem 1.5rem; }
             .ambiente-bloco h3 { font-size: 1.5rem; }
+            .check-info { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -455,7 +505,7 @@
                     <h4>Playground</h4>
                 </div>
                 <div class="destaque-item">
-                    <div class="destaque-icon"></div>
+                    <div class="destaque-icon">🔥</div>
                     <h4>Churrasqueira</h4>
                 </div>
                 <div class="destaque-item">
@@ -463,11 +513,11 @@
                     <h4>Forno de Pizza</h4>
                 </div>
                 <div class="destaque-item">
-                    <div class="destaque-icon">🛏️</div>
+                    <div class="destaque-icon">️</div>
                     <h4>3 Quartos</h4>
                 </div>
                 <div class="destaque-item">
-                    <div class="destaque-icon"></div>
+                    <div class="destaque-icon">🚗</div>
                     <h4>5 Vagas</h4>
                 </div>
             </div>
@@ -493,7 +543,7 @@
                         <p><strong>Casa avarandada</strong> com rede para descanso</p>
                     </div>
                     <div class="ambiente-card">
-                        <div class="icon"></div>
+                        <div class="icon">🔥</div>
                         <p><strong>Área coberta</strong> com churrasqueira, forno de pizza, mesa e geladeira</p>
                     </div>
                     <div class="ambiente-card">
@@ -517,11 +567,11 @@
                         <p><strong>Piscina 6x12m</strong> com rede de vôlei, gol de futebol, ducha e lavabo</p>
                     </div>
                     <div class="ambiente-card">
-                        <div class="icon">🌊</div>
+                        <div class="icon"></div>
                         <p><strong>Toboágua</strong> para diversão garantida</p>
                     </div>
                     <div class="ambiente-card">
-                        <div class="icon"></div>
+                        <div class="icon">🌿</div>
                         <p><strong>Quiosque</strong> para momentos de descanso</p>
                     </div>
                 </div>
@@ -529,7 +579,7 @@
 
             <!-- AMBIENTE INTERNO -->
             <div class="ambiente-bloco">
-                <h3> Ambiente Interno</h3>
+                <h3>🏠 Ambiente Interno</h3>
                 <div class="ambiente-grid">
                     <div class="ambiente-card">
                         <div class="icon">🍳</div>
@@ -544,7 +594,7 @@
                         <p><strong>Sala de TV</strong> com canais abertos e sofá confortável</p>
                     </div>
                     <div class="ambiente-card">
-                        <div class="icon">🚿</div>
+                        <div class="icon"></div>
                         <p><strong>2 banheiros</strong> completos</p>
                     </div>
                     <div class="ambiente-card">
@@ -599,31 +649,60 @@
         <div class="container">
             <h2>Regras e Informações</h2>
             <p class="secao-subtitulo">Para garantir uma estadia agradável para todos</p>
-            <div class="regras-grid">
-                <div class="regra-item">
-                    <span class="regra-icon">👥</span>
-                    <div><strong>Capacidade:</strong> consulte valores</div>
+            
+            <div class="regras-container">
+                
+                <div class="regra-bloco">
+                    <h3>👥 Capacidade</h3>
+                    <p>Máximo de <strong>15 pessoas</strong>.</p>
+                    <div class="regra-destaque">
+                        <strong>⚠️ Taxa extra:</strong> Caso ultrapasse esse número, será cobrado <strong>R$ 200,00 por dia/pessoa</strong> excedente.
+                    </div>
                 </div>
-                <div class="regra-item">
-                    <span class="regra-icon">⏰</span>
-                    <div><strong>Check-in/out:</strong> consulte horários</div>
+
+                <div class="regra-bloco">
+                    <h3>🚭 Fumo</h3>
+                    <p><strong>Não é permitido fumar dentro da casa</strong>, somente nos ambientes externos.</p>
                 </div>
-                <div class="regra-item">
-                    <span class="regra-icon"></span>
-                    <div><strong>Animais:</strong> consulte condições</div>
+
+                <div class="regra-bloco">
+                    <h3>🏊 Piscina</h3>
+                    <p><strong>Não é permitido comer e beber dentro da piscina.</strong> Para isso, utilize o quiosque.</p>
                 </div>
-                <div class="regra-item">
-                    <span class="regra-icon">🔊</span>
-                    <div><strong>Som:</strong> respeitar vizinhança</div>
+
+                <div class="regra-bloco">
+                    <h3>🐾 Animais</h3>
+                    <p><strong>Animais são bem-vindos!</strong> Porém:</p>
+                    <p>• Não é permitido a entrada do pet na piscina</p>
+                    <p>• O dono fica responsável por limpar as necessidades do animalzinho na área interna e externa da casa</p>
                 </div>
-                <div class="regra-item">
-                    <span class="regra-icon"></span>
-                    <div><strong>Limpeza:</strong> deixar o local organizado</div>
+
+                <div class="regra-bloco">
+                    <h3> Som</h3>
+                    <p><strong>Não ultrapassar o volume permitido em lei.</strong> Os hóspedes são responsáveis por arcar com multas, caso isso ocorra.</p>
                 </div>
-                <div class="regra-item">
-                    <span class="regra-icon">💰</span>
-                    <div><strong>Caução:</strong> consulte valores</div>
+
+                <div class="regra-bloco">
+                    <h3>📹 Segurança</h3>
+                    <p>Na parte externa da casa há <strong>câmera de segurança</strong> para proteção de todos.</p>
                 </div>
+
+                <div class="regra-bloco">
+                    <h3>⏰ Check-in e Check-out</h3>
+                    <div class="check-info">
+                        <div class="check-card">
+                            <div class="icon">🔑</div>
+                            <h4>Check-in</h4>
+                            <p><strong>Após 18:00</strong></p>
+                        </div>
+                        <div class="check-card">
+                            <div class="icon">🚪</div>
+                            <h4>Check-out</h4>
+                            <p><strong>Antes das 16:00</strong></p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -650,4 +729,3 @@
 
 </body>
 </html>
-

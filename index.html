@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chácara MA&NA - Seu Refúgio na Natureza</title>
+    <meta name="description" content="Chácara para locação com piscina, salão de festas e área verde.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-principal: #2d5016;
+            --verde-claro: #4a7c2c;
+            --bege: #f5f1e8;
+            --branco: #ffffff;
+            --cinza-escuro: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--cinza-escuro);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--verde-principal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.7)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--verde-claro);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: var(--verde-principal);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--verde-principal);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .sobre {
+            background: var(--bege);
+        }
+
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .sobre-texto p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .sobre-imagem img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .estrutura-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--verde-principal);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .eventos {
+            background: var(--bege);
+        }
+
+        .eventos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .evento-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .evento-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .evento-content {
+            padding: 2rem;
+        }
+
+        .evento-content h3 {
+            color: var(--verde-principal);
+            margin-bottom: 1rem;
+        }
+
+        .regras-lista {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .regra-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .regra-icon {
+            font-size: 2rem;
+        }
+
+        .contato {
+            background: var(--verde-principal);
+            color: white;
+            text-align: center;
+        }
+
+        .contato h2 {
+            color: white;
+        }
+
+        .contato-info {
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .contato-info p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20ba5a;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: var(--cinza-escuro);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.2rem; }
+            nav ul { flex-direction: column; gap: 1rem; }
+            .sobre-content { grid-template-columns: 1fr; }
+            h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#estrutura">Estrutura</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#regras">Regras</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div>
+            <h1>Chácara MA&NA</h1>
+            <p>Seu refúgio perfeito na natureza</p>
+            <a href="#contato" class="btn">Consultar Disponibilidade</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <h2>Sobre a Chácara</h2>
+        <div class="sobre-content">
+            <div class="sobre-texto">
+                <p>A <strong>Chácara MA&NA</strong> é um espaço único, localizado a apenas 30 minutos do centro da cidade, onde você encontra o equilíbrio perfeito entre natureza e conforto.</p>
+                <p>Com mais de <strong>5.000m² de área verde</strong>, nossa chácara oferece um ambiente tranquilo e seguro para suas festas, eventos corporativos, finais de semana em família ou simplesmente para desacelerar e recarregar as energias.</p>
+                <p>Aqui, cada detalhe foi pensado para proporcionar momentos inesquecíveis: da piscina refrescante ao salão de festas amplo, da área de churrasqueira aos quartos confortáveis.</p>
+            </div>
+            <div class="sobre-imagem">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800" alt="Vista da chácara">
+            </div>
+        </div>
+    </section>
+
+    <section id="estrutura">
+        <h2>Nossa Estrutura</h2>
+        <div class="estrutura-grid">
+            <div class="card">
+                <div class="card-icon">🏊</div>
+                <h3>Piscina</h3>
+                <p>Piscina ampla com área de deck, espreguiçadeiras e espaço para crianças.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎉</div>
+                <h3>Salão de Festas</h3>
+                <p>Salão climatizado com capacidade para até 120 pessoas, equipado com som e iluminação.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"></div>
+                <h3>Churrasqueira</h3>
+                <p>Área coberta com churrasqueira completa, pia, bancada e mesa para até 20 pessoas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛏️</div>
+                <h3>Quartos</h3>
+                <p>4 quartos confortáveis com capacidade para até 16 pessoas. Roupa de cama e banho incluídas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌳</div>
+                <h3>Área Verde</h3>
+                <p>Ampla área gramada para atividades ao ar livre, jogos e momentos de relaxamento.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚗</div>
+                <h3>Estacionamento</h3>
+                <p>Estacionamento privativo para até 20 veículos, com segurança e iluminação noturna.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="eventos">
+        <h2>Tipos de Eventos</h2>
+        <div class="eventos-grid">
+            <div class="evento-card">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800" alt="Casamento">
+                <div class="evento-content">
+                    <h3>💍 Casamentos</h3>
+                    <p>Celebre seu grande dia em um cenário natural e romântico.</p>
+                </div>
+            </div>
+            <div class="evento-card">
+                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800" alt="Aniversário">
+                <div class="evento-content">
+                    <h3>🎂 Aniversários</h3>
+                    <p>Comemore seu aniversário de forma única, com piscina e churrasqueira.</p>
+                </div>
+            </div>
+            <div class="evento-card">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800" alt="Evento Corporativo">
+                <div class="evento-content">
+                    <h3>🏢 Eventos Corporativos</h3>
+                    <p>Team building e confraternizações em um ambiente inspirador.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="regras">
+        <h2>Regras e Políticas</h2>
+        <div class="regras-lista">
+            <div class="regra-item">
+                <span class="regra-icon">⏰</span>
+                <div><strong>Entrada:</strong> 12h | <strong>Saída:</strong> 12h do dia seguinte</div>
+            </div>
+            <div class="regra-item">
+                <span class="regra-icon">👥</span>
+                <div><strong>Capacidade:</strong> 120 pessoas (dia) / 40 pessoas (pernoite)</div>
+            </div>
+            <div class="regra-item">
+                <span class="regra-icon">🔊</span>
+                <div><strong>Som:</strong> Permitido até 23h</div>
+            </div>
+            <div class="regra-item">
+                <span class="regra-icon"></span>
+                <div><strong>Caução:</strong> R$ 500,00 (devolvida sem danos)</div>
+            </div>
+            <div class="regra-item">
+                <span class="regra-icon">🐕</span>
+                <div><strong>Animais:</strong> Permitidos com aviso prévio</div>
+            </div>
+            <div class="regra-item">
+                <span class="regra-icon">🧹</span>
+                <div><strong>Limpeza:</strong> Taxa inclusa na diária</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <h2>Consulte Disponibilidade</h2>
+        <div class="contato-info">
+            <p>📍 Localização: [Sua cidade] - SP</p>
+            <p>📞 Telefone: (XX) XXXXX-XXXX</p>
+            <p> Email: contato@chacaramana.com.br</p>
+            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de consultar disponibilidade" class="whatsapp-btn" target="_blank">
+                💬 Falar no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Chácara MA&NA. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

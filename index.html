@@ -35,7 +35,6 @@
             color: var(--cinza-escuro);
         }
 
-        /* NAVBAR */
         nav {
             position: fixed;
             top: 0;
@@ -68,10 +67,9 @@
             color: var(--verde-claro);
         }
 
-        /* HERO */
         .hero {
             background: linear-gradient(rgba(45, 80, 22, 0.55), rgba(45, 80, 22, 0.55)),
-                        url('imagens/vista-aerea.jpg') center/cover;
+                        url('/chacarama-na/imagens/vista-aerea.jpg') center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -123,7 +121,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        /* SECTIONS */
         section {
             padding: 5rem 2rem;
         }
@@ -150,7 +147,6 @@
             margin-right: auto;
         }
 
-        /* SOBRE */
         .sobre {
             background: var(--bege);
         }
@@ -178,7 +174,6 @@
             box-shadow: var(--sombra-forte);
         }
 
-        /* DESTAQUES */
         .destaque-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -209,7 +204,6 @@
             font-size: 1rem;
         }
 
-        /* AMBIENTES */
         .ambientes {
             background: var(--bege-claro);
         }
@@ -269,7 +263,6 @@
             object-fit: cover;
         }
 
-        /* GALERIA */
         .galeria-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -309,7 +302,6 @@
             font-size: 1.1rem;
         }
 
-        /* REGRAS */
         .regras {
             background: var(--bege);
         }
@@ -358,7 +350,6 @@
             color: #856404;
         }
 
-        /* CHECK-IN/CHECKOUT */
         .check-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -389,7 +380,6 @@
             color: var(--cinza-escuro);
         }
 
-        /* CONTATO */
         .contato {
             background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
             color: white;
@@ -435,7 +425,6 @@
             transform: scale(1.05);
         }
 
-        /* FOOTER */
         footer {
             background: var(--cinza-escuro);
             color: white;
@@ -447,7 +436,6 @@
             opacity: 0.8;
         }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitulo { font-size: 1.1rem; }
@@ -475,7 +463,6 @@
         </ul>
     </nav>
 
-    <!-- HERO -->
     <section id="inicio" class="hero">
         <div>
             <h1>Chácara MA&NA</h1>
@@ -485,7 +472,6 @@
         </div>
     </section>
 
-    <!-- SOBRE -->
     <section id="sobre" class="sobre">
         <div class="container">
             <h2>Sobre a Chácara</h2>
@@ -497,13 +483,12 @@
                     <p>Aqui você encontra <strong>lazer, descanso, sossego e convivência</strong> — tudo o que é preciso para momentos inesquecíveis com quem você ama.</p>
                 </div>
                 <div class="sobre-imagem">
-                    <img src="imagens/casa.jpg" alt="Casa avarandada da Chácara MA&NA">
+                    <img src="/chacarama-na/imagens/casa.jpg" alt="Casa avarandada da Chácara MA&NA">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DESTAQUES -->
     <section>
         <div class="container">
             <h2>Destaques</h2>
@@ -537,13 +522,11 @@
         </div>
     </section>
 
-    <!-- AMBIENTES -->
     <section id="ambientes" class="ambientes">
         <div class="container">
             <h2>Nossos Ambientes</h2>
             <p class="secao-subtitulo">Conheça cada cantinho da nossa chácara</p>
 
-            <!-- AMBIENTE EXTERNO -->
             <div class="ambiente-bloco">
                 <h3>🌳 Ambiente Externo</h3>
                 <div class="ambiente-grid">
@@ -556,7 +539,7 @@
                         <p><strong>Casa avarandada</strong> com rede para descanso</p>
                     </div>
                     <div class="ambiente-card">
-                        <div class="icon"></div>
+                        <div class="icon">🔥</div>
                         <p><strong>Área coberta</strong> com churrasqueira, forno de pizza, mesa e geladeira</p>
                     </div>
                     <div class="ambiente-card">
@@ -589,11 +572,10 @@
                     </div>
                 </div>
                 <div class="ambiente-imagem">
-                    <img src="imagens/churrasqueira.jpg" alt="Churrasqueira e forno de pizza">
+                    <img src="/chacarama-na/imagens/churrasqueira.jpg" alt="Churrasqueira e forno de pizza">
                 </div>
             </div>
 
-            <!-- AMBIENTE INTERNO -->
             <div class="ambiente-bloco">
                 <h3>🏠 Ambiente Interno</h3>
                 <div class="ambiente-grid">
@@ -602,7 +584,7 @@
                         <p><strong>Cozinha ampla</strong> com 2 geladeiras, fogão e micro-ondas</p>
                     </div>
                     <div class="ambiente-card">
-                        <div class="icon">️</div>
+                        <div class="icon">🍽️</div>
                         <p><strong>Sala de jantar</strong> com mesa para 10 pessoas</p>
                     </div>
                     <div class="ambiente-card">
@@ -626,33 +608,31 @@
         </div>
     </section>
 
-    <!-- GALERIA -->
     <section id="galeria">
         <div class="container">
             <h2>Galeria de Fotos</h2>
             <p class="secao-subtitulo">Conheça nosso espaço através das imagens</p>
             <div class="galeria-grid">
                 <div class="galeria-item">
-                    <img src="imagens/vista-aerea.jpg" alt="Vista aérea da chácara">
+                    <img src="/chacarama-na/imagens/vista-aerea.jpg" alt="Vista aérea da chácara">
                     <div class="legenda">Vista aérea completa</div>
                 </div>
                 <div class="galeria-item">
-                    <img src="imagens/piscina.jpg" alt="Piscina com toboágua">
+                    <img src="/chacarama-na/imagens/piscina.jpg" alt="Piscina com toboágua">
                     <div class="legenda">Piscina 6x12m com toboágua</div>
                 </div>
                 <div class="galeria-item">
-                    <img src="imagens/casa.jpg" alt="Casa avarandada">
+                    <img src="/chacarama-na/imagens/casa.jpg" alt="Casa avarandada">
                     <div class="legenda">Casa avarandada</div>
                 </div>
                 <div class="galeria-item">
-                    <img src="imagens/churrasqueira.jpg" alt="Churrasqueira e forno de pizza">
+                    <img src="/chacarama-na/imagens/churrasqueira.jpg" alt="Churrasqueira e forno de pizza">
                     <div class="legenda">Churrasqueira e forno de pizza</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REGRAS -->
     <section id="regras" class="regras">
         <div class="container">
             <h2>Regras e Informações</h2>
@@ -669,7 +649,7 @@
                 </div>
 
                 <div class="regra-bloco">
-                    <h3> Fumo</h3>
+                    <h3>🚭 Fumo</h3>
                     <p><strong>Não é permitido fumar dentro da casa</strong>, somente nos ambientes externos.</p>
                 </div>
 
@@ -715,7 +695,6 @@
         </div>
     </section>
 
-    <!-- CONTATO -->
     <section id="contato" class="contato">
         <div class="container">
             <h2>Consulte Disponibilidade</h2>

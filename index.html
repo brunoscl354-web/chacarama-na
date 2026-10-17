@@ -238,6 +238,7 @@
             box-shadow: var(--sombra);
             aspect-ratio: 4/3;
             background: var(--bege);
+            cursor: pointer;
         }
 
         .galeria-item img {
@@ -260,6 +261,38 @@
             font-weight: 600;
             font-size: 1.1rem;
         }
+
+        .filtro-botoes {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .filtro-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--verde-principal);
+            background: transparent;
+            color: var(--verde-principal);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .filtro-btn:hover {
+            background: var(--verde-claro);
+            color: white;
+        }
+
+        .filtro-btn.ativo {
+            background: var(--verde-principal);
+            color: white;
+        }
+
+        .escondido { display: none; }
 
         .regras { background: var(--bege); }
 
@@ -368,6 +401,74 @@
 
         footer p { opacity: 0.8; }
 
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.93);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        }
+
+        .lightbox-legenda {
+            position: absolute;
+            bottom: 25px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .lightbox-fechar {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            color: #fff;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .lightbox-fechar:hover { color: #ffcc00; }
+
+        .lightbox-seta {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-seta:hover { background: rgba(255,255,255,0.4); }
+
+        .lightbox-seta.anterior { left: 20px; }
+        .lightbox-seta.proxima { right: 20px; }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitulo { font-size: 1.1rem; }
@@ -379,6 +480,9 @@
             section { padding: 3rem 1.5rem; }
             .ambiente-bloco h3 { font-size: 1.5rem; }
             .check-info { grid-template-columns: 1fr; }
+            .lightbox-seta { font-size: 1.5rem; padding: 8px 13px; }
+            .lightbox-seta.anterior { left: 8px; }
+            .lightbox-seta.proxima { right: 8px; }
         }
     </style>
 </head>
@@ -473,7 +577,7 @@
         </div>
     </section>
 
-        <section id="regras" class="regras">
+    <section id="regras" class="regras">
         <div class="container">
             <h2>Regras e Informações</h2>
             <p class="secao-subtitulo">Para garantir uma estadia agradável para todos</p>
@@ -518,200 +622,202 @@
     </section>
 
     <section id="galeria">
-    <div class="container">
-        <h2>Galeria de Fotos</h2>
-        <p class="secao-subtitulo">Conheça nosso espaço através das imagens</p>
+        <div class="container">
+            <h2>Galeria de Fotos</h2>
+            <p class="secao-subtitulo">Clique nas fotos para ampliar</p>
 
-        <div class="filtro-botoes">
-            <button class="filtro-btn ativo" onclick="filtrar('todas', this)">Todas</button>
-            <button class="filtro-btn" onclick="filtrar('externa', this)">Área Externa</button>
-            <button class="filtro-btn" onclick="filtrar('interna', this)">Área Interna</button>
+            <div class="filtro-botoes">
+                <button class="filtro-btn ativo" onclick="filtrar('todas', this)">Todas</button>
+                <button class="filtro-btn" onclick="filtrar('externa', this)">Área Externa</button>
+                <button class="filtro-btn" onclick="filtrar('interna', this)">Área Interna</button>
+            </div>
+
+            <div class="galeria-grid" id="galeriaGrid">
+
+                <!-- ÁREA EXTERNA -->
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/area%20externa.jpeg" alt="Área externa" loading="lazy">
+                    <div class="legenda">Área externa</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/area_churrasqueira.jpeg" alt="Área da churrasqueira" loading="lazy">
+                    <div class="legenda">Área da churrasqueira</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/casa%20de%20boneca.jpeg" alt="Casinha de boneca" loading="lazy">
+                    <div class="legenda">Casinha de boneca</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/casa%20varanda.jpg" alt="Casa avarandada" loading="lazy">
+                    <div class="legenda">Casa avarandada</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/churrasqueira_1.jpeg" alt="Churrasqueira" loading="lazy">
+                    <div class="legenda">Churrasqueira</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/Churrasqueira_2.jpg" alt="Churrasqueira" loading="lazy">
+                    <div class="legenda">Churrasqueira</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/corredor%20externo_1.jpeg" alt="Corredor externo" loading="lazy">
+                    <div class="legenda">Corredor externo</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/corredor%20externo_2.jpeg" alt="Corredor externo" loading="lazy">
+                    <div class="legenda">Corredor externo</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/corredor%20externo_3.jpeg" alt="Corredor externo" loading="lazy">
+                    <div class="legenda">Corredor externo</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/escorregador%20da%20piscina.jpeg" alt="Escorregador da piscina" loading="lazy">
+                    <div class="legenda">Escorregador da piscina</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/forno%20de%20pizza.jpeg" alt="Forno de pizza" loading="lazy">
+                    <div class="legenda">Forno de pizza</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/palyground_2.jpeg" alt="Playground" loading="lazy">
+                    <div class="legenda">Playground</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/piscina_1.jpeg" alt="Piscina" loading="lazy">
+                    <div class="legenda">Piscina</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/piscina_2.jpeg" alt="Piscina" loading="lazy">
+                    <div class="legenda">Piscina</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/piscina_3.jpeg" alt="Piscina" loading="lazy">
+                    <div class="legenda">Piscina</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/piscina_4.avif" alt="Piscina" loading="lazy">
+                    <div class="legenda">Piscina</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/playgroud_1.jpeg" alt="Playground" loading="lazy">
+                    <div class="legenda">Playground</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/playground_3.jpeg" alt="Playground" loading="lazy">
+                    <div class="legenda">Playground</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/quadra%20de%20esportes.jpeg" alt="Quadra de esportes" loading="lazy">
+                    <div class="legenda">Quadra de esportes</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/rampa%20de%20acesso.jpeg" alt="Rampa de acesso" loading="lazy">
+                    <div class="legenda">Rampa de acesso</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/sanit%C3%A1rios_externos.jpeg" alt="Sanitários externos" loading="lazy">
+                    <div class="legenda">Sanitários externos</div>
+                </div>
+
+                <div class="galeria-item externa" onclick="abrirLightbox(this)">
+                    <img src="Imagens/Imagem%20de%20fundo.jpeg" alt="Vista panorâmica" loading="lazy">
+                    <div class="legenda">Vista panorâmica</div>
+                </div>
+
+                <!-- ÁREA INTERNA -->
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/banheiro_1.jpeg" alt="Banheiro" loading="lazy">
+                    <div class="legenda">Banheiro</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/banheiro_2.jpeg" alt="Banheiro" loading="lazy">
+                    <div class="legenda">Banheiro</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/cozinha_1.jpeg" alt="Cozinha" loading="lazy">
+                    <div class="legenda">Cozinha</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/cozinha_2.jpeg" alt="Cozinha" loading="lazy">
+                    <div class="legenda">Cozinha</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/cozinha_3.jpeg" alt="Cozinha" loading="lazy">
+                    <div class="legenda">Cozinha</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/corredor_interno.jpeg" alt="Corredor interno" loading="lazy">
+                    <div class="legenda">Corredor interno</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/mesa%20de%20jantar.jpeg" alt="Mesa de jantar" loading="lazy">
+                    <div class="legenda">Mesa de jantar</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/Quarto_1.jpeg" alt="Quarto" loading="lazy">
+                    <div class="legenda">Quarto</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/Quarto_2.jpeg" alt="Quarto" loading="lazy">
+                    <div class="legenda">Quarto</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/Quarto_3.jpeg" alt="Quarto" loading="lazy">
+                    <div class="legenda">Quarto</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/sala%20de%20estar_1.jpeg" alt="Sala de estar" loading="lazy">
+                    <div class="legenda">Sala de estar</div>
+                </div>
+
+                <div class="galeria-item interna" onclick="abrirLightbox(this)">
+                    <img src="Imagens/sala%20de%20estar_2.jpeg" alt="Sala de estar" loading="lazy">
+                    <div class="legenda">Sala de estar</div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="galeria-grid" id="galeriaGrid">
-
-            <!-- 🌳 ÁREA EXTERNA -->
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/area%20externa.jpeg" alt="Área externa" loading="lazy">
-                <div class="legenda">Área externa</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/area_churrasqueira.jpeg" alt="Área da churrasqueira" loading="lazy">
-                <div class="legenda">Área da churrasqueira</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/casa%20de%20boneca.jpeg" alt="Casinha de boneca" loading="lazy">
-                <div class="legenda">Casinha de boneca</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/casa%20varanda.jpg" alt="Casa avarandada" loading="lazy">
-                <div class="legenda">Casa avarandada</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/churrasqueira_1.jpeg" alt="Churrasqueira" loading="lazy">
-                <div class="legenda">Churrasqueira</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/Churrasqueira_2.jpg" alt="Churrasqueira" loading="lazy">
-                <div class="legenda">Churrasqueira</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/corredor%20externo_1.jpeg" alt="Corredor externo" loading="lazy">
-                <div class="legenda">Corredor externo</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/corredor%20externo_2.jpeg" alt="Corredor externo" loading="lazy">
-                <div class="legenda">Corredor externo</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/corredor%20externo_3.jpeg" alt="Corredor externo" loading="lazy">
-                <div class="legenda">Corredor externo</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/escorregador%20da%20piscina.jpeg" alt="Escorregador da piscina" loading="lazy">
-                <div class="legenda">Escorregador da piscina</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/forno%20de%20pizza.jpeg" alt="Forno de pizza" loading="lazy">
-                <div class="legenda">Forno de pizza</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/palyground_2.jpeg" alt="Playground" loading="lazy">
-                <div class="legenda">Playground</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/piscina_1.jpeg" alt="Piscina" loading="lazy">
-                <div class="legenda">Piscina</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/piscina_2.jpeg" alt="Piscina" loading="lazy">
-                <div class="legenda">Piscina</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/piscina_3.jpeg" alt="Piscina" loading="lazy">
-                <div class="legenda">Piscina</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/piscina_4.avif" alt="Piscina" loading="lazy">
-                <div class="legenda">Piscina</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/playgroud_1.jpeg" alt="Playground" loading="lazy">
-                <div class="legenda">Playground</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/playground_3.jpeg" alt="Playground" loading="lazy">
-                <div class="legenda">Playground</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/quadra%20de%20esportes.jpeg" alt="Quadra de esportes" loading="lazy">
-                <div class="legenda">Quadra de esportes</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/rampa%20de%20acesso.jpeg" alt="Rampa de acesso" loading="lazy">
-                <div class="legenda">Rampa de acesso</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/sanit%C3%A1rios_externos.jpeg" alt="Sanitários externos" loading="lazy">
-                <div class="legenda">Sanitários externos</div>
-            </div>
-
-            <div class="galeria-item externa" onclick="abrirLightbox(this)">
-                <img src="Imagens/Imagem%20de%20fundo.jpeg" alt="Vista panorâmica" loading="lazy">
-                <div class="legenda">Vista panorâmica</div>
-            </div>
-
-            <!-- 🏠 ÁREA INTERNA -->
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/banheiro_1.jpeg" alt="Banheiro" loading="lazy">
-                <div class="legenda">Banheiro</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/banheiro_2.jpeg" alt="Banheiro" loading="lazy">
-                <div class="legenda">Banheiro</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/cozinha_1.jpeg" alt="Cozinha" loading="lazy">
-                <div class="legenda">Cozinha</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/cozinha_2.jpeg" alt="Cozinha" loading="lazy">
-                <div class="legenda">Cozinha</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/cozinha_3.jpeg" alt="Cozinha" loading="lazy">
-                <div class="legenda">Cozinha</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/corredor_interno.jpeg" alt="Corredor interno" loading="lazy">
-                <div class="legenda">Corredor interno</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/mesa%20de%20jantar.jpeg" alt="Mesa de jantar" loading="lazy">
-                <div class="legenda">Mesa de jantar</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/Quarto_1.jpeg" alt="Quarto" loading="lazy">
-                <div class="legenda">Quarto</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/Quarto_2.jpeg" alt="Quarto" loading="lazy">
-                <div class="legenda">Quarto</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/Quarto_3.jpeg" alt="Quarto" loading="lazy">
-                <div class="legenda">Quarto</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/sala%20de%20estar_1.jpeg" alt="Sala de estar" loading="lazy">
-                <div class="legenda">Sala de estar</div>
-            </div>
-
-            <div class="galeria-item interna" onclick="abrirLightbox(this)">
-                <img src="Imagens/sala%20de%20estar_2.jpeg" alt="Sala de estar" loading="lazy">
-                <div class="legenda">Sala de estar</div>
-            </div>
-
-        </div>
+    <!-- LIGHTBOX FOTO -->
+    <div id="lightbox" class="lightbox" onclick="fecharLightbox(event)">
+        <span class="lightbox-fechar" onclick="event.stopPropagation(); fecharLightbox(event)">&times;</span>
+        <button type="button" class="lightbox-seta anterior" onclick="event.stopPropagation(); mudarFoto(-1, event)">&#10094;</button>
+        <img id="lightboxImg" src="" alt="">
+        <button type="button" class="lightbox-seta proxima" onclick="event.stopPropagation(); mudarFoto(1, event)">&#10095;</button>
+        <div id="lightboxLegenda" class="lightbox-legenda"></div>
     </div>
-</section>
-
-<!-- LIGHTBOX FOTO -->
-<div id="lightbox" class="lightbox" onclick="fecharLightbox()">
-    <span class="lightbox-fechar">&times;</span>
-    <img id="lightboxImg" src="" alt="">
-    <div id="lightboxLegenda" class="lightbox-legenda"></div>
-</div>
 
     <section id="contato" class="contato">
         <div class="container">
@@ -730,6 +836,93 @@
     <footer>
         <p>&copy; 2024 Chácara MAYNA. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        // ===== FILTRO DA GALERIA =====
+        function filtrar(categoria, botao) {
+            const itens = document.querySelectorAll('.galeria-item');
+            itens.forEach(function(item) {
+                if (categoria === 'todas' || item.classList.contains(categoria)) {
+                    item.classList.remove('escondido');
+                } else {
+                    item.classList.add('escondido');
+                }
+            });
+
+            const botoes = document.querySelectorAll('.filtro-btn');
+            botoes.forEach(function(b) { b.classList.remove('ativo'); });
+            botao.classList.add('ativo');
+        }
+
+        // ===== LIGHTBOX =====
+        let fotoAtual = 0;
+        let fotosVisiveis = [];
+
+        function abrirLightbox(elemento) {
+            const itens = document.querySelectorAll('.galeria-item:not(.escondido)');
+            fotosVisiveis = [];
+
+            itens.forEach(function(item) {
+                const img = item.querySelector('img');
+                const leg = item.querySelector('.legenda');
+                fotosVisiveis.push({
+                    src: img.src,
+                    alt: img.alt,
+                    legenda: leg ? leg.textContent : img.alt
+                });
+            });
+
+            const imgClicada = elemento.querySelector('img');
+            fotoAtual = fotosVisiveis.findIndex(function(f) { return f.src === imgClicada.src; });
+            if (fotoAtual === -1) fotoAtual = 0;
+
+            atualizarLightbox();
+
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharLightbox(event) {
+            const alvo = event.target;
+            if (alvo.classList.contains('lightbox-fechar') || alvo.id === 'lightbox') {
+                fechar();
+            }
+        }
+
+        function fechar() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function mudarFoto(direcao, event) {
+            if (event) event.stopPropagation();
+            if (fotosVisiveis.length === 0) return;
+
+            fotoAtual += direcao;
+            if (fotoAtual >= fotosVisiveis.length) fotoAtual = 0;
+            if (fotoAtual < 0) fotoAtual = fotosVisiveis.length - 1;
+
+            atualizarLightbox();
+        }
+
+        function atualizarLightbox() {
+            if (fotosVisiveis.length === 0) return;
+            const img = document.getElementById('lightboxImg');
+            const legenda = document.getElementById('lightboxLegenda');
+            img.src = fotosVisiveis[fotoAtual].src;
+            img.alt = fotosVisiveis[fotoAtual].alt;
+            legenda.textContent = fotosVisiveis[fotoAtual].legenda;
+        }
+
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display !== 'flex') return;
+
+            if (event.key === 'Escape') fechar();
+            if (event.key === 'ArrowLeft') mudarFoto(-1, event);
+            if (event.key === 'ArrowRight') mudarFoto(1, event);
+        });
+    </script>
 
 </body>
 </html>

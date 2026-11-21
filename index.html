@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chácara MAYNA - Sul de Minas | Seu Refúgio na Natureza</title>
     <meta name="description" content="Chácara aconchegante no Sul de Minas, a 100 km de São Paulo. Piscina, churrasqueira, playground e muito lazer para família e amigos.">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,6 +17,7 @@
             --bege-claro: #faf8f2;
             --cinza-escuro: #333333;
             --cinza-medio: #666666;
+            --dourado: #c9a227;
             --sombra: 0 5px 20px rgba(0,0,0,0.1);
             --sombra-forte: 0 10px 30px rgba(0,0,0,0.15);
         }
@@ -28,6 +30,7 @@
             color: var(--cinza-escuro);
         }
 
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -72,6 +75,7 @@
             color: white !important;
         }
 
+        /* HERO */
         .hero {
             background: linear-gradient(rgba(45, 80, 22, 0.55), rgba(45, 80, 22, 0.55)),
                         url('Imagens/Imagem%20de%20fundo.jpeg') center/cover;
@@ -92,10 +96,11 @@
         }
 
         .hero .subtitulo {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
             font-style: italic;
+            font-weight: 600;
         }
 
         .hero .localizacao {
@@ -146,6 +151,36 @@
             margin-right: auto;
         }
 
+        /* JEITO MAYNA */
+        .jeito-mayna {
+            background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
+            color: white;
+            text-align: center;
+        }
+
+        .jeito-mayna h2 { color: white; }
+
+        .jeito-mayna .secao-subtitulo { color: rgba(255,255,255,0.9); }
+
+        .jeito-mayna-conteudo {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .jeito-mayna-conteudo p { margin-bottom: 1.5rem; }
+
+        .jeito-mayna-destaque {
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--dourado);
+            margin-top: 2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        /* SOBRE */
         .sobre { background: var(--bege); }
 
         .sobre-content {
@@ -169,6 +204,7 @@
             box-shadow: var(--sombra-forte);
         }
 
+        /* DESTAQUES */
         .destaque-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -191,6 +227,7 @@
 
         .destaque-item h4 { color: var(--verde-principal); font-size: 1rem; }
 
+        /* AMBIENTES */
         .ambientes { background: var(--bege-claro); }
 
         .ambiente-bloco { margin-bottom: 3rem; }
@@ -238,6 +275,52 @@
             object-fit: cover;
         }
 
+        /* ARREDORES */
+        .arredores { background: var(--bege); }
+
+        .arredores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .arredores-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--verde-claro);
+        }
+
+        .arredores-card:hover { transform: translateY(-5px); }
+
+        .arredores-distancia {
+            display: inline-block;
+            background: var(--verde-principal);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .arredores-card h4 {
+            color: var(--verde-principal);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .arredores-card p {
+            color: var(--cinza-medio);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* GALERIA */
         .galeria-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -276,7 +359,6 @@
             font-size: 1.1rem;
         }
 
-        /* Filtros da galeria */
         .filtro-botoes {
             display: flex;
             justify-content: center;
@@ -309,6 +391,10 @@
 
         .escondido { display: none; }
 
+        /* DEPOIMENTOS */
+        .depoimentos { background: var(--bege-claro); }
+
+        /* REGRAS */
         .regras { background: var(--bege); }
 
         .regras-container { max-width: 900px; margin: 0 auto; }
@@ -372,6 +458,158 @@
 
         .check-card p { font-size: 1.1rem; color: var(--cinza-escuro); }
 
+        /* COMO FUNCIONA */
+        .como-funciona { background: var(--bege-claro); }
+
+        .passos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .passo-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .passo-card:hover { transform: translateY(-5px); }
+
+        .passo-numero {
+            width: 50px;
+            height: 50px;
+            background: var(--verde-claro);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .passo-card h4 {
+            color: var(--verde-principal);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .passo-card p {
+            color: var(--cinza-medio);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* RESERVA */
+        .reserva { background: var(--bege); }
+
+        .reserva-container { max-width: 800px; margin: 0 auto; }
+
+        .reserva-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--sombra-forte);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid .full { grid-column: 1 / -1; }
+
+        .form-grupo label {
+            display: block;
+            font-weight: 600;
+            color: var(--verde-principal);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-grupo input,
+        .form-grupo select,
+        .form-grupo textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--cinza-escuro);
+            transition: border-color 0.3s;
+        }
+
+        .form-grupo input:focus,
+        .form-grupo select:focus,
+        .form-grupo textarea:focus {
+            outline: none;
+            border-color: var(--verde-claro);
+        }
+
+        .form-grupo textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-cont-extra {
+            font-size: 0.85rem;
+            color: var(--cinza-medio);
+            margin-top: 0.3rem;
+        }
+
+        .btn-reserva {
+            width: 100%;
+            padding: 16px 30px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-reserva:hover {
+            background: #20ba5a;
+            transform: scale(1.02);
+        }
+
+        .info-preco {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .info-preco strong { color: #856404; }
+
+        .reserva-alternativa {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--cinza-medio);
+        }
+
+        .reserva-alternativa a {
+            color: var(--verde-principal);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* CONTATO */
         .contato {
             background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
             color: white;
@@ -485,6 +723,7 @@
         .lightbox-seta.anterior { left: 20px; }
         .lightbox-seta.proxima { right: 20px; }
 
+        /* RESPONSIVO */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitulo { font-size: 1.1rem; }
@@ -496,9 +735,13 @@
             section { padding: 3rem 1.5rem; }
             .ambiente-bloco h3 { font-size: 1.5rem; }
             .check-info { grid-template-columns: 1fr; }
+            .passos-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .reserva-form { padding: 2rem 1.5rem; }
             .lightbox-seta { font-size: 1.5rem; padding: 8px 13px; }
             .lightbox-seta.anterior { left: 8px; }
             .lightbox-seta.proxima { right: 8px; }
+            .jeito-mayna-destaque { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -509,31 +752,47 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#ambientes">Ambientes</a></li>
+            <li><a href="#arredores">Arredores</a></li>
             <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#regras">Regras</a></li>
+            <li><a href="#reserva">Reserva</a></li>
             <li><a href="#contato">Contato</a></li>
             <li><a href="https://www.instagram.com/chacaramayna/" target="_blank" class="nav-instagram">📸 Instagram</a></li>
         </ul>
     </nav>
 
+    <!-- HERO -->
     <section id="inicio" class="hero">
         <div>
             <h1>Chácara MAYNA</h1>
-            <p class="subtitulo">Seu refúgio perfeito na natureza</p>
+            <p class="subtitulo">Tem lugares que a gente visita.<br>E outros que ficam na memória.</p>
             <p class="localizacao">📍 Sul de Minas — apenas 100 km de São Paulo</p>
-            <a href="#contato" class="btn">Consultar Disponibilidade</a>
+            <a href="#reserva" class="btn">Consultar Disponibilidade</a>
         </div>
     </section>
 
+    <!-- O JEITO MAYNA -->
+    <section class="jeito-mayna">
+        <div class="container">
+            <h2>O jeito MAYNA de estar junto</h2>
+            <div class="jeito-mayna-conteudo">
+                <p>Aqui, cada um encontra seu jeito de aproveitar. Tem quem prefira a piscina, quem não resista a uma partida no campo e quem escolha a tranquilidade da varanda para colocar a conversa em dia. O melhor? Ninguém precisa estar no mesmo lugar para se sentir parte da diversão.</p>
+                <p class="jeito-mayna-destaque">A próxima boa lembrança pode começar aqui.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSA HISTÓRIA -->
     <section id="sobre" class="sobre">
         <div class="container">
-            <h2>Sobre a Chácara</h2>
-            <p class="secao-subtitulo">Lazer, descanso, sossego e convivência em um só lugar</p>
+            <h2>Nossa História</h2>
+            <p class="secao-subtitulo">Mais do que uma estadia, um lugar onde a simplicidade, a alegria e as boas lembranças se encontram.</p>
             <div class="sobre-content">
                 <div class="sobre-texto">
-                    <p>A <strong>Chácara MAYNA</strong> é um espaço aconchegante e agradável, pensado para receber famílias e amigos que buscam qualidade de tempo juntos.</p>
-                    <p>Localizada no <strong>Sul de Minas</strong>, a apenas <strong>100 km de São Paulo</strong>, oferece a combinação perfeita entre proximidade da cidade grande e o sossego do interior.</p>
-                    <p>Aqui você encontra <strong>lazer, descanso, sossego e convivência</strong> — tudo o que é preciso para momentos inesquecíveis com quem você ama.</p>
+                    <p>A <strong>Chácara MAYNA</strong> nasceu do sonho de um pai e de uma mãe de criar um espaço especial para suas duas filhas, familiares e amigos. Um lugar onde a rotina dá lugar à convivência, às brincadeiras e às risadas que ficam na memória.</p>
+                    <p>Localizada no <strong>Sul de Minas</strong>, a aproximadamente <strong>100 km de São Paulo</strong>, reúne o sossego do interior com espaços que convidam ao lazer e à descontração.</p>
+                    <p>Hoje, abre suas portas para que outras famílias também possam viver momentos únicos e construir suas próprias lembranças — porque a verdadeira riqueza desse lugar está nas histórias que ele ajuda a criar.</p>
                 </div>
                 <div class="sobre-imagem">
                     <img src="Imagens/casa%20varanda.jpg" alt="Casa avarandada da Chácara MAYNA">
@@ -542,6 +801,7 @@
         </div>
     </section>
 
+    <!-- DESTAQUES -->
     <section>
         <div class="container">
             <h2>Destaques</h2>
@@ -557,13 +817,14 @@
         </div>
     </section>
 
+    <!-- AMBIENTES -->
     <section id="ambientes" class="ambientes">
         <div class="container">
             <h2>Nossos Ambientes</h2>
             <p class="secao-subtitulo">Conheça cada cantinho da nossa chácara</p>
 
             <div class="ambiente-bloco">
-                <h3> Ambiente Externo</h3>
+                <h3>🌳 Ambiente Externo</h3>
                 <div class="ambiente-grid">
                     <div class="ambiente-card"><div class="icon">🚗</div><p><strong>Estacionamento</strong> para até 5 carros</p></div>
                     <div class="ambiente-card"><div class="icon">🏠</div><p><strong>Casa avarandada</strong> com rede para descanso</p></div>
@@ -594,6 +855,53 @@
         </div>
     </section>
 
+    <!-- ARREDORES -->
+    <section id="arredores" class="arredores">
+        <div class="container">
+            <h2>O que fazer nos arredores</h2>
+            <p class="secao-subtitulo">Aproveite para explorar as belezas da Serra da Mantiqueira</p>
+            
+            <div class="arredores-grid">
+                <div class="arredores-card">
+                    <div class="arredores-distancia">8 km</div>
+                    <h4>Centro de Extrema</h4>
+                    <p>Comércio local, restaurantes típicos e praças arborizadas.</p>
+                </div>
+                
+                <div class="arredores-card">
+                    <div class="arredores-distancia">12 km</div>
+                    <h4>Cachoeira do Salto</h4>
+                    <p>Parque municipal com trilhas, cachoeiras e áreas para banho.</p>
+                </div>
+                
+                <div class="arredores-card">
+                    <div class="arredores-distancia">15 km</div>
+                    <h4>Pico do Lobo Guará</h4>
+                    <p>Trilha com vista panorâmica e ponto de decolagem para parapente.</p>
+                </div>
+                
+                <div class="arredores-card">
+                    <div class="arredores-distancia">35 km</div>
+                    <h4>Monte Verde</h4>
+                    <p>Trilha da Pedra Redonda, chocolate artesanal, fondue e compras.</p>
+                </div>
+                
+                <div class="arredores-card">
+                    <div class="arredores-distancia">45 km</div>
+                    <h4>Gonçalves</h4>
+                    <p>Cachoeiras, Pedra Alta, ecoturismo e gastronomia de montanha.</p>
+                </div>
+                
+                <div class="arredores-card">
+                    <div class="arredores-distancia">75 km</div>
+                    <h4>Campos do Jordão</h4>
+                    <p>Capivari, teleférico, cervejarias artesanais e clima europeu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGRAS -->
     <section id="regras" class="regras">
         <div class="container">
             <h2>Regras e Informações</h2>
@@ -604,6 +912,7 @@
                     <h3>👥 Capacidade</h3>
                     <p>Máximo de <strong>15 pessoas</strong>.</p>
                     <div class="regra-destaque"><strong>⚠️ Taxa extra:</strong> Caso ultrapasse esse número, será cobrado <strong>R$ 200,00 por dia/pessoa</strong> excedente.</div>
+                    <p style="margin-top: 0.8rem; color: var(--cinza-medio); font-size: 0.9rem;">📌 Os 3 quartos somam 12 lugares em camas (cada um com 1 cama de casal e 2 de solteiro). As acomodações extras para completar as 15 pessoas são combinadas no momento da reserva.</p>
                 </div>
                 <div class="regra-bloco">
                     <h3>🚭 Fumo</h3>
@@ -638,6 +947,7 @@
         </div>
     </section>
 
+    <!-- GALERIA -->
     <section id="galeria">
         <div class="container">
             <h2>Galeria de Fotos</h2>
@@ -827,7 +1137,106 @@
         </div>
     </section>
 
-    <!-- LIGHTBOX FOTO -->
+    <!-- DEPOIMENTOS (Google Reviews) -->
+    <section id="depoimentos" class="depoimentos">
+        <div class="container">
+            <h2>O que dizem nossos hóspedes</h2>
+            <p class="secao-subtitulo">
+                ⭐ 4,7 de 5 — com base em 32 avaliações no Google
+            </p>
+
+            <!-- Elfsight Google Reviews -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div class="elfsight-app-320b3e99-8dec-43e0-be0b-d11ff591492e" data-elfsight-app-lazy></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="como-funciona">
+        <div class="container">
+            <h2>Como funciona a reserva</h2>
+            <p class="secao-subtitulo">Três passos simples para garantir sua estadia</p>
+            <div class="passos-grid">
+                <div class="passo-card">
+                    <div class="passo-numero">1</div>
+                    <h4>Escolha as datas</h4>
+                    <p>Informe a data de entrada e saída desejadas no formulário abaixo.</p>
+                </div>
+                <div class="passo-card">
+                    <div class="passo-numero">2</div>
+                    <h4>Preencha seus dados</h4>
+                    <p>Adicione o número de hóspedes, crianças e outras observações.</p>
+                </div>
+                <div class="passo-card">
+                    <div class="passo-numero">3</div>
+                    <h4>Envie pelo WhatsApp</h4>
+                    <p>Você receberá uma resposta rápida sobre a disponibilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVA -->
+    <section id="reserva" class="reserva">
+        <div class="container">
+            <div class="reserva-container">
+                <h2>Solicitar Reserva</h2>
+                <p class="secao-subtitulo">Preencha as informações abaixo e envie diretamente pelo WhatsApp</p>
+                
+                <div class="reserva-form">
+                    <div class="info-preco">
+                        <strong>💰 Valores:</strong> Entre em contato para consultar a diária e condições especiais. Informe no campo de observações se deseja usar churrasqueira, forno de pizza ou levar pet.
+                    </div>
+
+                    <form id="formReserva" onsubmit="enviarWhatsApp(event)">
+                        <div class="form-grid">
+                            <div class="form-grupo">
+                                <label for="dataEntrada">Data de entrada *</label>
+                                <input type="date" id="dataEntrada" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="dataSaida">Data de saída *</label>
+                                <input type="date" id="dataSaida" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="adultos">Adultos *</label>
+                                <input type="number" id="adultos" min="1" max="15" value="2" required>
+                                <p class="form-cont-extra">Máximo 15 pessoas</p>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="criancas">Crianças</label>
+                                <input type="number" id="criancas" min="0" max="15" value="0">
+                            </div>
+                            <div class="form-grupo">
+                                <label for="pets">Pets</label>
+                                <select id="pets">
+                                    <option value="Não">Não</option>
+                                    <option value="Sim">Sim</option>
+                                </select>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="nome">Seu nome *</label>
+                                <input type="text" id="nome" placeholder="Digite seu nome" required>
+                            </div>
+                            <div class="form-grupo full">
+                                <label for="observacoes">Observações</label>
+                                <textarea id="observacoes" placeholder="Ex: queremos usar churrasqueira, forno de pizza, quantos carros levaremos, etc."></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-reserva">📲 Enviar solicitação pelo WhatsApp</button>
+                    </form>
+                    
+                    <p class="reserva-alternativa">
+                        Prefere ligar? <a href="#contato">Clique aqui para ver o contato</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox" onclick="fecharLightbox(event)">
         <span class="lightbox-fechar" onclick="event.stopPropagation(); fecharLightbox(event)">&times;</span>
         <button type="button" class="lightbox-seta anterior" onclick="event.stopPropagation(); mudarFoto(-1, event)">&#10094;</button>
@@ -836,10 +1245,11 @@
         <div id="lightboxLegenda" class="lightbox-legenda"></div>
     </div>
 
+    <!-- CONTATO -->
     <section id="contato" class="contato">
         <div class="container">
-            <h2>Consulte Disponibilidade</h2>
-            <p class="secao-subtitulo">Entre em contato conosco e reserve sua estadia</p>
+            <h2>Contato</h2>
+            <p class="secao-subtitulo">Estamos prontos para atender você</p>
             <div class="contato-info">
                 <p>📍 Sul de Minas — 100 km de São Paulo</p>
                 <p>📞 (11) 97606-0650</p>
@@ -876,7 +1286,6 @@
         let fotosVisiveis = [];
 
         function abrirLightbox(elemento) {
-            // Coleta apenas as fotos visíveis (respeitando o filtro ativo)
             const itens = document.querySelectorAll('.galeria-item:not(.escondido)');
             fotosVisiveis = [];
 
@@ -902,7 +1311,6 @@
 
         function fecharLightbox(event) {
             const alvo = event.target;
-            // Fecha ao clicar no fundo escuro ou no botão X
             if (alvo.classList.contains('lightbox-fechar') || alvo.id === 'lightbox') {
                 fechar();
             }
@@ -933,7 +1341,6 @@
             legenda.textContent = fotosVisiveis[fotoAtual].legenda;
         }
 
-        // Navegação pelo teclado
         document.addEventListener('keydown', function(event) {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.style.display !== 'flex') return;
@@ -942,6 +1349,43 @@
             if (event.key === 'ArrowLeft') mudarFoto(-1, event);
             if (event.key === 'ArrowRight') mudarFoto(1, event);
         });
+
+        // ===== FORMULÁRIO DE RESERVA VIA WHATSAPP =====
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+
+            const dataEntrada = document.getElementById('dataEntrada').value;
+            const dataSaida = document.getElementById('dataSaida').value;
+            const adultos = document.getElementById('adultos').value;
+            const criancas = document.getElementById('criancas').value;
+            const pets = document.getElementById('pets').value;
+            const nome = document.getElementById('nome').value;
+            const observacoes = document.getElementById('observacoes').value;
+
+            if (!dataEntrada || !dataSaida || !nome) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            const dataEntradaFormatada = new Date(dataEntrada).toLocaleDateString('pt-BR');
+            const dataSaidaFormatada = new Date(dataSaida).toLocaleDateString('pt-BR');
+
+            let mensagem = `Olá! Meu nome é ${nome} e gostaria de consultar a disponibilidade da Chácara MAYNA.%0A%0A`;
+            mensagem += `📅 *Data de entrada:* ${dataEntradaFormatada}%0A`;
+            mensagem += `📅 *Data de saída:* ${dataSaidaFormatada}%0A`;
+            mensagem += `👥 *Adultos:* ${adultos}%0A`;
+            mensagem += `🧒 *Crianças:* ${criancas}%0A`;
+            mensagem += `🐾 *Pets:* ${pets}%0A`;
+            
+            if (observacoes.trim() !== '') {
+                mensagem += `💬 *Observações:* ${observacoes}%0A`;
+            }
+
+            mensagem += `%0AAguardo retorno sobre disponibilidade e valores. Obrigado!`;
+
+            const url = `https://wa.me/5511976060650?text=${mensagem}`;
+            window.open(url, '_blank');
+        }
     </script>
 
 </body>
